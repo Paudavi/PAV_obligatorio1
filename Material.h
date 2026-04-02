@@ -12,6 +12,7 @@ protected:
 public:
     Material(string codigo, string titulo, int anioPublicacion);
     virtual float calcularMulta(int diasAtraso) = 0;
+    virtual string getTipo() = 0;
     virtual ~Material(){};
     string getCodigo();
     string getTitulo();

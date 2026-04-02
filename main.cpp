@@ -127,7 +127,7 @@ DtMaterial **verPrestamosAntesDeFecha(string ci, DtFecha *fecha, int &cantPresta
     for (int i = 0; i < 10; i++)
     {
         Prestamo *p = lector->getPrestamo(i);
-        if (p != nullptr && esMenorFecha(p->getFechaPrestamo(), *fecha))
+        if (p != nullptr && esMenorFecha(*fecha, p->getFechaPrestamo()))
             cantPrestamos++;
     }
 
@@ -137,10 +137,19 @@ DtMaterial **verPrestamosAntesDeFecha(string ci, DtFecha *fecha, int &cantPresta
     {
         if (lector->getPrestamo(i) != nullptr)
         {
-            if (esMenorFecha(lector->getPrestamo(i)->getFechaPrestamo(), *fecha))
+            if (esMenorFecha(*fecha, lector->getPrestamo(i)->getFechaPrestamo()))
             {
                 Material *m = lector->getPrestamo(i)->getMaterial();
-                materialesPrestados[j] = new DtMaterial(m->getCodigo(), m->getTitulo(), m->getAnioPublicacion(), 0.0);
+                if (m->getTipo() == "libro")
+                {
+                    Libro *l = (Libro *)m;
+                    materialesPrestados[j] = new DtLibro(l->getCodigo(), l->getTitulo(), m->getAnioPublicacion(), l->getAutor(), l->getCantPaginas(), 0.0);
+                }
+                else
+                {
+                    Revista *r = (Revista *)m;
+                    materialesPrestados[j] = new DtRevista(r->getNumeroEdicion(), r->getEsMensual(), r->getCodigo(), r->getTitulo(), m->getAnioPublicacion(), 0.0);
+                }
                 j++;
             }
         }
@@ -171,10 +180,14 @@ int main()
 
     materiales[0] = new Libro("Cervantes", 800, "L001", "Don Quijote", 1605);
     materiales[1] = new Revista(5, false, "R001", "National Geographic", 2020);
-    materiales[2] = new Revista(56, true, "R001", "Paula", 1996);
+    materiales[2] = new Revista(56, true, "R002", "Paula", 1996);
     cantMateriales = 3;
     DtFecha fecha(1, 1, 2020);
     lectores[0] = new Lector("1", "Juan Perez", fecha);
+    Prestamo* prestamoLibro = new Prestamo(fecha, 10, materiales[0]);
+    Prestamo* prestamoRevista = new Prestamo(fecha, 10, materiales[1]);
+    lectores[0]->setPrestamo(0, prestamoLibro);
+    lectores[0]->setPrestamo(1,prestamoRevista);
     cantLectores = 1;
 
     int opcion;
@@ -300,7 +313,7 @@ int main()
                 cin >> codigo;
                 cout << "Titulo: ";
                 cin >> titulo;
-                cout << "Anio: ";
+                cout << "Año: ";
                 cin >> anio;
                 DtMaterial *dtm;
                 if (tipo == 1)
@@ -311,7 +324,7 @@ int main()
                     cin >> autor;
                     cout << "Paginas: ";
                     cin >> pags;
-                    dtm = new DtLibro(autor, pags);
+                    dtm = new DtLibro(codigo, titulo, anio, autor, pags, 0.0);
                 }
                 else
                 {
@@ -321,7 +334,7 @@ int main()
                     cin >> edicion;
                     cout << "Es mensual (1/0): ";
                     cin >> mensual;
-                    dtm = new DtRevista(edicion, mensual);
+                    dtm = new DtRevista(edicion, mensual, codigo, titulo, anio, 0.0);
                 }
                 dtm->codigo = codigo;
                 dtm->titulo = titulo;

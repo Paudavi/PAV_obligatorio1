@@ -12,6 +12,7 @@ private:
 public:
     Libro(string autor, int cantPaginas, string codigo, string titulo, int anioPublicacion);
     float calcularMulta(int diasAtraso);
+    string getTipo();
     string getAutor();
     int getCantPaginas();
     void setAutor(string autor);

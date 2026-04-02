@@ -12,6 +12,7 @@ float Libro::calcularMulta(int diasAtraso)
     return diasAtraso * 5;
 }
 
+string Libro::getTipo() { return "libro"; }
 string Libro::getAutor() { return autor; }
 int Libro::getCantPaginas() { return cantPaginas; }
 void Libro::setAutor(string autor) { this->autor = autor; }

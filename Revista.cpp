@@ -11,6 +11,7 @@ float Revista::calcularMulta(int diasAtraso)
     return diasAtraso * 2;
 }
 
+string Revista::getTipo() { return "revista"; }
 int Revista::getNumeroEdicion() { return numeroEdicion; }
 bool Revista::getEsMensual() { return esMensual; }
 void Revista::setNumeroEdicion(int numeroEdicion) { this->numeroEdicion = numeroEdicion; }
