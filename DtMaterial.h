@@ -9,7 +9,8 @@ class DtMaterial{
     string titulo;
     int anioPublicacion;
     float multaBase;
-
+    virtual string getTipo();
+    virtual void imprimir();
     DtMaterial(string codigo, string titulo, int anioPublicacion, float multaBase);
 };
 #endif

@@ -1,6 +1,14 @@
 #include "DtRevista.h"
-
-DtRevista::DtRevista(int numeroEdicion, bool esMensual) {
+#include <iostream>
+#include "DtMaterial.h"
+DtRevista::DtRevista(int numeroEdicion, bool esMensual) : DtMaterial(codigo, titulo, anioPublicacion, 0.0)
+{
     this->numeroEdicion = numeroEdicion;
     this->esMensual = esMensual;
+}
+std::string DtRevista::getTipo() { return "revista"; }
+void DtRevista::imprimir() {
+    DtMaterial::imprimir();
+    cout << "- Numero de edicion: " << numeroEdicion << endl;
+    cout << "- Es mensual: " << (esMensual ? "Si" : "No") << endl;
 }
