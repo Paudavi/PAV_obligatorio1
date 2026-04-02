@@ -1,10 +1,11 @@
-CXX = g++
-CXXFLAGS = -Wall -std=c++11
-TARGET = programa
-SRCS = $(wildcard *.cpp)
+#variables
+compilador = g++
+flags = -Wall -std=c++11
+ejecutable = main
+archivos = $(wildcard *.cpp)
 
-$(TARGET): $(SRCS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRCS)
+$(ejecutable): $(archivos)
+	$(compilador) $(flags) -o $(ejecutable) $(archivos)
 
 clean:
 	rm -f $(TARGET)
