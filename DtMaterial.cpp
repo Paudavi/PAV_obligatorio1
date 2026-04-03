@@ -7,6 +7,8 @@ DtMaterial::DtMaterial(string codigo, string titulo, int anioPublicacion, float 
     this->multaBase = multaBase;
     this->titulo = titulo;
 };
+DtMaterial::~DtMaterial() {}
+
 std::string DtMaterial::getTipo(){return "";}
 
 void DtMaterial::imprimir() {

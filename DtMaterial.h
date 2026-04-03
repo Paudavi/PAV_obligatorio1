@@ -12,5 +12,6 @@ class DtMaterial{
     virtual string getTipo();
     virtual void imprimir();
     DtMaterial(string codigo, string titulo, int anioPublicacion, float multaBase);
+    virtual ~DtMaterial();
 };
 #endif

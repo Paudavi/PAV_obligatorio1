@@ -8,4 +8,4 @@ $(ejecutable): $(archivos)
 	$(compilador) $(flags) -o $(ejecutable) $(archivos)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(ejecutable)

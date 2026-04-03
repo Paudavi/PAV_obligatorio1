@@ -8,6 +8,7 @@ class DtRevista : public DtMaterial{
     bool esMensual;
     std::string getTipo();
     DtRevista(int numeroEdicion, bool esMensual, string codigo, string titulo, int anioPublicacion, float multaBase);
+    ~DtRevista();
     void imprimir();
 };
 #endif

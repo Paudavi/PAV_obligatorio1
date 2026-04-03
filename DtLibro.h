@@ -11,6 +11,7 @@ public:
     int cantPaginas;
     string getTipo();
     DtLibro(string codigo, string titulo, int anioPublicacion, string autor, int cantPaginas, float multaBase);
+    ~DtLibro();
     void imprimir();
 };
 #endif

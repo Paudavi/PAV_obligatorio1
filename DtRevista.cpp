@@ -6,6 +6,8 @@ DtRevista::DtRevista(int numeroEdicion, bool esMensual, string codigo, string ti
     this->numeroEdicion = numeroEdicion;
     this->esMensual = esMensual;
 }
+DtRevista::~DtRevista() {}
+
 std::string DtRevista::getTipo() { return "revista"; }
 void DtRevista::imprimir() {
     DtMaterial::imprimir();

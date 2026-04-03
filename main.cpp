@@ -9,7 +9,6 @@ using namespace std;
 #include "DtRevista.h"
 #include "DtLibro.h"
 const int MAX_LECTORES = 10;
-const int MAX_PRESTAMOS = 10;
 const int MAX_MATERIALES = 30;
 Lector *lectores[MAX_LECTORES];
 Material *materiales[MAX_MATERIALES];

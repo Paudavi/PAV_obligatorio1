@@ -10,6 +10,8 @@ DtLibro::DtLibro(string codigo, string titulo, int anioPublicacion, string autor
     this->cantPaginas = cantPaginas;
 }
 
+DtLibro::~DtLibro() {}
+
 std::string DtLibro::getTipo() { return "libro"; }
 void DtLibro::imprimir()
 {
